@@ -5,8 +5,6 @@
 #include <TCanvas.h>
 #include <vector>
 void MuonReconstruct_1500evts_99per::Loop(){
-//      muonSeedTree_1500evts.root <- muonSeedTree6.root+muonSeedTree7.root+muonSeedTree8.root
-//   In a ROOT session, you can do:
 //      Root > .L MuonReconstruct_1500evts_99per.C
 //      Root > MuonReconstruct_1500evts_99per t
 //      Root > t.GetEntry(12); // Fill t data members with entry number 12
@@ -37,7 +35,7 @@ void MuonReconstruct_1500evts_99per::Loop(){
     return pow(x*x+y*y+z*z,0.5);
   }
   
-  TFile* myFile = new TFile("MuonReconstruct_1500evts_99per.root","RECREATE");
+  TFile* myFile = new TFile("hogehoge.root","RECREATE");
   TTree* eventsTree = new TTree("eventsTree","tree");
   
   vector<float>* sta1_x;
@@ -127,13 +125,6 @@ void MuonReconstruct_1500evts_99per::Loop(){
     Long64_t ientry = LoadTree(jentry);
     if (ientry < 0) break;
     nb = fChain->GetEntry(jentry);   nbytes += nb;
-    
-    /*    
-	  if(jentry == 38 || jentry == 41 || jentry == 43 || jentry == 44 || jentry == 80 || jentry == 82 || jentry == 133 || jentry == 140){
-	  eventsTree->Fill();
-	  continue;
-	  }
-    */
 
     cout<<"--------------------------------------------------------------"<<endl;        
     cout<<"                        "<<jentry<<"th event                      "<<endl; 
